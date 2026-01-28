@@ -15,7 +15,8 @@
 
 % {E-mail}{mobilephone}{homepage}
 % be careful of _ in emaill address
-\contactInfo{(+86) 18317713768}{Java后端工程师}{lihaotian@bupt.edu.cn}{}
+% \contactInfo{18317713768}{形式化分析}{lihaotian@bupt.edu.cn}{}
+\contactInfo{18317713768}{后端开发工程师}{lihaotian@bupt.edu.cn}{}
 % {E-mail}{mobilephone}
 % keep the last empty braces!
 %\contactInfo{xxx@yuanbin.me}{(+86) 131-221-87xxx}{}
@@ -34,68 +35,78 @@
 \section{技术能力}
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.2ex]
-  \item \textbf{计算机基础}: 熟练掌握计算机网络，数据结构和算法，操作系统，
-  \item \textbf{框架}: 熟练掌握Spring，SpringBoot，SpringMVC，MyBatis开发框架
-  \item \textbf{数据库}: 熟练使用MySQL，Redis及常见优化手段
+  \item \textbf{计算机基础}: 熟练掌握操作系统，计算机网络，数据结构和算法
+  \item \textbf{框架}：熟练掌握 Spring，SpringBoot，SpringMVC，MyBatis 开发框架
+  \item \textbf{数据库}：熟练使用 MySQL，Redis
+  % \item \textbf{形式化分析工具}: 熟练掌握使用Tamarin-prover、DeepSec工具
 \end{itemize}
 
 % \end{itemize}
-
+\section{实习经历}
+\datedsubsection{\textbf{约翰威立商务服务（北京）有限公司}}{2025.07.16-2025.09.30}
+项目背景是为用户在微信端提供订阅期刊状态更新的通知，支持用户订阅期刊，支持订阅的期刊状态发生变化时，发送通知给微信
+\begin {itemize}
+\item 基于 Rex 系统 API 开发用户文章状态查询功能，实现查询结果的数据库持久化存储，支撑文章状态数据的系统化管理
+\item 设计 Kafka 消息消费架构处理用户文章状态变更（涵盖 update/delete 事件）：通过抽象类封装公共处理流程（消息过滤→KafkaEvent对象封装→消费幂等性校验→数据抽取→持久化存储）
+\item 实现微信通知定时发送机制，配置特定间隔的周期性推送任务
+\item 构建通知失败重传机制，设置三次重试阈值，超出后自动触发开发者邮件告警，保障通知链路可靠性
+\item 开发用户订阅功能模块，支持用户自主选择关注内容，完善服务交互体系
+\end {itemize}
+\datedsubsection{\textbf{美团}}{2025.11.27-至今}
+需求背景是民宿业务线准备引入订单通作为商家曝光的套餐，需要在用户下单阶段准确识别订单来源，
+判断订单是否由订单通带来，以保障平台订单通相关收入的准确统计。
+主要负责在归因服务中引入民宿订单通完整业务链路，负责站外订单通的归因判定逻辑设计与实现
+\begin {itemize}
+\item 基于交易侧请求进行参数校验与过滤，确保归因流程仅在有效订单场景下触发
+\item 结合商家账户与房源信息，校验商家是否具备订单通投放费用，提前终止无效归因请求
+\item 根据用户下单位置与商家位置进行距离判断，减少不必要的归因计算
+\item 设计并实现归因链处理流程，包括数据补齐、归因匹配、结果下发、归因重写、渠道映射订单通等关键步骤
+\end {itemize}
 \section{项目经历}
-\datedsubsection{\textbf{道路交通管理系统}}{2022-2023}
+\datedsubsection{\textbf{美食点评项目}}{2024.09-2024.12}
 \begin{itemize}
-  \item 采用Echarts、Vue、Element-UI设计前端页面
-  \item 采用SpringBoot、MyBatis、MySql构建后端接口
-  \item 百度API实现车牌识别、高德API实现道路规划和实时道路推送、阿里云实现短信验证
+  \item 基于 JWT 实现用户身份认证机制，保障接口访问安全性
+  \item 设计前端流量控制策略，通过按钮置灰、图形验证码及排队队列限制请求频次，有效过滤无效请求
+  \item 引入 RabbitMQ 实现订单流程异步化处理，解耦业务链路，提升系统吞吐量
+  \item 使用Redis缓存热点数据，减轻数据库压力
+  \item 结合乐观锁与 Lua 脚本实现库存原子操作，解决高并发下商品超卖问题，确保数据一致性
+  \item 使用分布式锁，解决一人一单问题
 \end{itemize}
-\datedsubsection{\textbf{美食点评项目}}{2024-2025}
-\begin{itemize}
-  \item 采用 Redis 实现Session共享登录
-  \item 采用 Redis 实现秒杀的高并发
-  \item 采用 Redis 实现隐藏秒杀接口，接口限流的功能
-  \item 采用 Rabit-MQ 的Topic模式实现异步消息处理，提高吞吐量
-  \item 采用 Redis 实现商户信息缓存策略，解决缓存穿透、缓存雪崩、缓存击穿等问题，提升数据读取性能
-  \item 采用 乐观锁和lua脚本解决商品超卖的问题
-  \item 采用 分布式锁解决一人一单的问题
-  \item 采用 BitMap 和 GEO 数据结构优化签到统计和商户位置查询
-\end{itemize}
-% \begin{onehalfspacing}
-% \end{onehalfspacing}
-
-% \datedsubsection{\textbf{DID-ACTE} 荷兰莱顿}{2015年}
-% \role{本科毕业设计}{LIACS 交换生}
-% 利用结巴分词对中国古文进行分词与词性标注，用已有领域知识训练形成 classifier 并对结果进行调优
-% \begin{onehalfspacing}
+% \datedsubsection{\textbf{面向6G的移动通信安全研究}}{2024-2025}
 % \begin{itemize}
-%   \item 利用结巴分词对中国古文进行分词与词性标注
-%   \item 利用已有领域知识训练形成 classifier, 并用分词结果进行测试反馈
-%   \item 尝试不同规则，对 classifier 进行调优
+%   \item 对5G-AKA协议进行学习
+%   \item 使用Tamarin-prover对5G-AKA协议进行形式化建模
+%   \item 对5G-AKA协议进行改进，并使用Tamarin-prover获得认证性、机密性的最小安全假设
+%   \item 使用USRP-B210, Free5gc, SrsUE, SrsRAN对改进协议进行实现
 % \end{itemize}
-% \end{onehalfspacing}
 \section{个人总结}
 % increase linespacing [parsep=0.5ex]
 \begin{itemize}[parsep=0.2ex]
-  \item 读书期间，认真努力，年级排名2/72，顺利保研至北京邮电大学。
-  \item 善于在工作中提出问题、发现问题、解决问题，有较强的解决问题能力。
-  \item 学习能力强，勤奋好学，踏实肯干，通过短时间的学习掌握工作内容并快速上手
+ \item \textbf{保研至北京邮电大学}，学业基础扎实且目标明确
+ \item \textbf{以学生第一作者身份发表CCF A 类论文1篇}，发表在网安四大顶会之一，ACM CCS，录用率仅13\%
+ \item  \textbf{获得研究生国家奖学金}，具备优秀的学习能力与自我驱动力
+\item  获得北京邮电大学研究生一等学业奖学金
+ \item  通过英语四六级
+%  \item 学习与实践转化能力强，曾独立在\textbf{1个月内}完成实验平台的搭建、调试与测试，保障项目高效推进。
 \end{itemize}
-\section{荣誉证书}
-% increase linespacing [parsep=0.5ex]
-\begin{itemize}[parsep=0.2ex]
-%   \item LeetCodeOJ Solutions, \textit{https://github.com/hijiangtao/LeetCodeOJ}
-  \item \textit{<5G-RNAKA: A Random Number-based Authentication and Key
-Agreement Protocol for 5G Systems>}已录用在CCS 2025，网安四大顶会，学生一作
-  \item 中国互联网+大赛省级二等奖 
-  \item 通过英语四六级
-  \item 通过计算机二级等级考试(java)
-  \item 本科期间获得国家励志奖学金
-  \item 硕士期间获得北京邮电大学一等奖学金
+% \section{荣誉证书}
+% % increase linespacing [parsep=0.5ex]
+% \begin{itemize}[parsep=0.2ex]
+% %   \item LeetCodeOJ Solutions, \textit{https://github.com/hijiangtao/LeetCodeOJ}
+%   \item \textit{<5G-RNAKA: A Random Number-based Authentication and Key
+% Agreement Protocol for 5G Systems>}已录用在ACM CCS 2025，网安四大顶会，CCF A类，学生一作
+%   \item 硕士期间获得国家奖学金  
+%   \item 硕士期间获得北京邮电大学一等奖学金
+  % \item 本科期间获得国家励志奖学金
+  % \item 中国互联网+大赛省级二等奖 
+  % \item 通过英语四六级
+  % \item 通过计算机二级等级考试 (java)
 %   \item 中国机器人大赛暨Robocup公开赛(武术擂台赛)全国一等奖,2013年10月
   % \item 第11届北京理工大学“世纪杯”竞赛学生课外科技作品竞赛\textbf{特等奖},2013年8月
   % \item VIS Components for security system, \textit{https://hijiangtao.github.io/ss-vis-component/}
   % \item 个人博客：\textit{https://hijiangtao.github.io/}，更多作品见 \textit{https://github.com/hijiangtao}
 %   \item 电视节目"爸爸去哪儿"可视化分析展示, \textit{https://hijiangtao.github.io/variety-show-hot-spot-vis/}
-\end{itemize}
+% \end{itemize}
 
 % \section{\faHeartO\ 项目/作品摘要}
 % \section{项目/作品摘要}
@@ -120,4 +131,6 @@ Agreement Protocol for 5G Systems>}已录用在CCS 2025，网安四大顶会，�
 %\newpage
 %\bibliographystyle{IEEETran}
 %\bibliography{mycite}
+% 订单来源可能来自站内或站外渠道，若仅依赖站内标识，容易导致站外订单通订单漏记或错记。
+% 因此在订单创建过程中，需要在无法确认站内订单通来源时，引入归因服务，对订单是否为站外订单通带来进行判定。
 \end{document}
